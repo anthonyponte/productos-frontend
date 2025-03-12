@@ -27,7 +27,7 @@
                         <div class="form-floating mb-3">
                             <input th:field="*{nombre}" type="text" class="form-control" id="txtNombre" name="txtNombre"
                                 placeholder="Nombre" required />
-                            <label for="txtNombre">Descripcion</label>
+                            <label for="txtNombre">Nombre</label>
                         </div>
 
                         <div class="form-floating mb-3">
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-floating">
-                            <input th:field="*{precio}" type="number" class="form-control" id="txtPrecio"
+                            <input th:field="*{precio}" type="number" step=".01" class="form-control" id="txtPrecio"
                                 name="txtPrecio" placeholder="Precio" required />
                             <label for="txtPrecio">Precio</label>
                         </div>

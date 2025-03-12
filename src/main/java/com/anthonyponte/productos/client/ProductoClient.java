@@ -15,6 +15,15 @@ public class ProductoClient {
         this.client = webClientBuilder.baseUrl("http://localhost:8095/api/productos").build();
     }
 
+    public Producto create(Producto producto) {
+        return client.post()
+                .uri("")
+                .bodyValue(producto)
+                .retrieve()
+                .bodyToMono(Producto.class)
+                .block();
+    }
+
     public List<Producto> readAll() {
         return client.get()
                 .uri("/")
@@ -29,6 +38,23 @@ public class ProductoClient {
                 .uri("/{id}", id)
                 .retrieve()
                 .bodyToMono(Producto.class)
+                .block();
+    }
+
+    public Producto update(Long id, Producto producto) {
+        return client.put()
+                .uri("/{id}", id)
+                .bodyValue(producto)
+                .retrieve()
+                .bodyToMono(Producto.class)
+                .block();
+    }
+
+    public void delete(Long id) {
+        client.delete()
+                .uri("/{id}", id)
+                .retrieve()
+                .toBodilessEntity()
                 .block();
     }
 }
