@@ -49,15 +49,13 @@ public class ProductoController {
       return "producto";
     }
 
-System.out.println(producto);
-
     if (producto.getId() == null) {
       client.create(producto);
+      attributes.addFlashAttribute("textAlertSuccess", "Se guardo el producto '" + producto.getNombre() + "'");
     } else {
       client.update(producto.getId(), producto);
+      attributes.addFlashAttribute("textAlertSuccess", "Se actualizo el producto '" + producto.getId() + "'");
     }
-
-    attributes.addFlashAttribute("textAlertSuccess", "Se guardo el producto '" + producto.getId() + "'");
 
     return "redirect:/productos/";
   }
