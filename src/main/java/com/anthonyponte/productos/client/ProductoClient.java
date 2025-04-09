@@ -12,7 +12,7 @@ public class ProductoClient {
     private final WebClient client;
 
     public ProductoClient(WebClient.Builder webClientBuilder) {
-        this.client = webClientBuilder.baseUrl("http://localhost:9095/api/productos").build();
+        this.client = webClientBuilder.baseUrl("http://msproductos.anthonyponte.com/api/productos").build();
     }
 
     public Producto create(Producto producto) {
