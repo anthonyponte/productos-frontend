@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.anthonyponte</groupId>
-	<artifactId>productos</artifactId>
+	<artifactId>productos-frontend</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>productos</name>
-	<description>CRUD de productos para el curso de Docker</description>
+	<name>productos-frontend</name>
+	<description>CRUD de productos para el curso de Docker y Kubernetes Básico</description>
 	<url/>
 	<licenses>
 		<license/>

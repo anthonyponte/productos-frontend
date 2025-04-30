@@ -6,7 +6,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static final String BASE_URL = "http://msproductos.anthonyponte.com";
+    private static final String BASE_URL = "http://anthonyponte.com";
     private static Retrofit retrofit = null;
 
     public static ProductoService getProductoService() {
