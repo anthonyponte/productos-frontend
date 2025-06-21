@@ -9,22 +9,6 @@ public class Producto implements Serializable {
     private String descripcion;
     private double precio;
 
-    public Producto() {
-    }
-
-    public Producto(Long id, String nombre, String descripcion, double precio) {
-        this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-    }
-
-    public Producto(String nombre, String descripcion, double precio) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-    }
-
     public Long getId() {
         return id;
     }
@@ -55,11 +39,5 @@ public class Producto implements Serializable {
 
     public void setPrecio(double precio) {
         this.precio = precio;
-    }
-
-    @Override
-    public String toString() {
-        return "Producto [id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", precio=" + precio
-                + "]";
     }
 }

@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.anthonyponte</groupId>
 	<artifactId>productos-frontend</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>productos-frontend</name>
-	<description>CRUD de productos para el curso de Docker y Kubernetes Básico</description>
+	<description>CRUD de productos para el proyecto final del curso de Docker y Kubernetes Básico</description>
 	<url/>
 	<licenses>
 		<license/>

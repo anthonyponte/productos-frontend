@@ -13,18 +13,18 @@ import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ProductoService {
-    @POST("/api/v1/productos")
-    Call<Producto> create(@Body Producto producto);
-
     @GET("/api/v1/productos")
-    Call<List<Producto>> readAll();
+    Call<List<Producto>> listarProductos();
 
     @GET("/api/v1/productos/{id}")
-    Call<Producto> read(@Path("id") Long id);
+    Call<Producto> obtenerProductoPorId(@Path("id") Long id);
+
+    @POST("/api/v1/productos")
+    Call<Producto> crearProducto(@Body Producto producto);
 
     @PUT("/api/v1/productos/{id}")
-    Call<Producto> update(@Path("id") Long id, @Body Producto producto);
+    Call<Producto> actualizarProducto(@Path("id") Long id, @Body Producto producto);
 
     @DELETE("/api/v1/productos/{id}")
-    Call<Void> delete(@Path("id") Long id);
+    Call<Void> eliminarProductoPorId(@Path("id") Long id);
 }

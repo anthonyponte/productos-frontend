@@ -24,10 +24,10 @@ import retrofit2.Response;
 public class ProductoController {
 
   @GetMapping
-  public DeferredResult<String> consultar(Model model) {
+  public DeferredResult<String> listarProductos(Model model) {
     DeferredResult<String> view = new DeferredResult<>();
 
-    Call<List<Producto>> call = RetrofitClient.getProductoService().readAll();
+    Call<List<Producto>> call = RetrofitClient.getProductoService().listarProductos();
     call.enqueue(new Callback<List<Producto>>() {
       @Override
       public void onResponse(Call<List<Producto>> call, Response<List<Producto>> response) {
@@ -56,10 +56,10 @@ public class ProductoController {
   }
 
   @GetMapping("/editar/{id}")
-  public DeferredResult<String> editar(@PathVariable("id") Long id, Model model) {
+  public DeferredResult<String> obtenerProductoPorId(@PathVariable("id") Long id, Model model) {
     DeferredResult<String> view = new DeferredResult<>();
 
-    Call<Producto> call = RetrofitClient.getProductoService().read(id);
+    Call<Producto> call = RetrofitClient.getProductoService().obtenerProductoPorId(id);
     call.enqueue(new Callback<Producto>() {
       @Override
       public void onResponse(Call<Producto> call, Response<Producto> response) {
@@ -82,7 +82,7 @@ public class ProductoController {
   }
 
   @PostMapping("/guardar")
-  public DeferredResult<String> guardar(Producto producto, BindingResult result, RedirectAttributes attr) {
+  public DeferredResult<String> guardarProducto(Producto producto, BindingResult result, RedirectAttributes attr) {
     DeferredResult<String> view = new DeferredResult<>();
 
     if (result.hasErrors()) {
@@ -97,7 +97,7 @@ public class ProductoController {
           Producto p = response.body();
           String mensaje = producto.getId() == null
               ? "Se guardó el producto '" + p.getNombre() + "'"
-              : "Se actualizó el producto '" + p.getId() + "'";
+              : "Se actualizó el producto '" + p.getNombre() + "'";
           attr.addFlashAttribute("textAlertSuccess", mensaje);
           view.setResult("redirect:/productos");
         } else {
@@ -112,19 +112,19 @@ public class ProductoController {
     };
 
     if (producto.getId() == null) {
-      RetrofitClient.getProductoService().create(producto).enqueue(callback);
+      RetrofitClient.getProductoService().crearProducto(producto).enqueue(callback);
     } else {
-      RetrofitClient.getProductoService().update(producto.getId(), producto).enqueue(callback);
+      RetrofitClient.getProductoService().actualizarProducto(producto.getId(), producto).enqueue(callback);
     }
 
     return view;
   }
 
   @GetMapping("/eliminar/{id}")
-  public DeferredResult<String> eliminar(@PathVariable("id") Long id, RedirectAttributes attr) {
+  public DeferredResult<String> eliminarProductoPorId(@PathVariable("id") Long id, RedirectAttributes attr) {
     DeferredResult<String> view = new DeferredResult<>();
 
-    Call<Void> call = RetrofitClient.getProductoService().delete(id);
+    Call<Void> call = RetrofitClient.getProductoService().eliminarProductoPorId(id);
     call.enqueue(new Callback<Void>() {
       @Override
       public void onResponse(Call<Void> call, Response<Void> response) {
